@@ -1,0 +1,46 @@
+From: Do Thi Lien <liendt@ptit.edu.vn> 
+Sent: Monday, July 13, 2026 9:13 AM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+
+Chào em,
+Cô đã đọc báo cáo. Cô có nhận xét như sau:
+•	Có vẻ báo cáo này các em dùng AI để viết, chưa có độ sâu hiểu về phương pháp và đọc rất rời rạc, ko logic. Đọc lại các nội dung trong mail trước cô viết. Khi trình bày các phương pháp tư vấn cần làm rõ Dữ liệu đầu vào, đầu ra, quá trình xử lý về bản chất như thế nào (đưa ra hình vẽ và giải thích trên đó) trước khi đưa ra công thức. Các công thức trình bày cũng còn lỗi ký hiệu rất nhiều (Có vẽ khi các em copy), giải thích chưa chi tiết, chưa có kèm ví dụ minh họa. 
+
+•	Các em nghiên cứu bản chất quá trình thực hiện của phương pháp trước, dùng thuật ngữ Item nói chung (Item ở đây có thể là món ăn, bài hát, quyển sách....chưa gắn vào loại item cụ thể nào cả). Việc biểu diễn phương pháp cũng cần đưa ra ở dạng tổng quát . Phần thực nghiệm thì lấy những dataset cô cho tên ở mail trước để thử trên cùng phương pháp. Như vậy chưa lệ thuộc vào food ở đây mà bắt phương pháp phải theo.
+
+•	Quá trình cài đặt cần dựa vào phương pháp mà ra các bước thực hiện, chứ ko phải giải thích rời rạc file code, ví dụ:  file đồ thị food_graph.pt xây dựng ntn, train_GCN.py - Heterogeneous LightGCN các class liên quan ntn....
+
+•	Dataset thực nghiệm cần đa dạng, chỉ rõ nguồn, thông tin trong dataset gồm những gì, tiền xử lý gì ko,...
+
+•	Phần cài đặt thực nghiệm cần viết kỹ hơn.
+
+Các em thực hiện kỹ lại những nội dung trên rồi gửi lại cô trước khi đi tiếp. 
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Wednesday, July 8, 2026 11:05 PM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Em chào cô ạ,
+Nhóm em xin gửi cô báo cáo nghiên cứu các phương pháp hệ tư vấn và kết quả thực nghiệm theo những nội dung cô đã hướng dẫn.
+Nhóm em rất mong nhận được ý kiến nhận xét và góp ý của cô để tiếp tục hoàn thiện đề tài.
+Em xin chân thành cảm ơn cô.
+Trân trọng,
+ 
+From: Do Thi Lien <liendt@ptit.edu.vn> 
+Sent: Wednesday, June 24, 2026 9:03 AM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Chào em,
+Cô đã đọc báo cáo của nhóm. Cô nhận xét như sau: nhìn chung những nghiên cứu của các em ở mức bước đầu cơ bản, chưa đi sâu vào giải pháp RAG (thực tế có nhiều giải pháp RAG cần lựa chọn phù hợp), chưa có thực nghiệm thông qua các thang đo đánh giá tiêu chuẩn cho các hệ thống học máy.
+ 
+Đồ án cần tiến sâu hơn nữa về mặt phương pháp, đây là phần sẽ được ghi nhận đánh giá tốt hơn khi các em ra bảo vệ. Cụ thể, các em thực hiện tiếp như sau:
+1.	Về mặt phương pháp tư vấn: Nhằm nâng cao hiệu quả tư vấn sản phẩm cá nhân hóa người dùng, các em nghiên cứu tiếp về hệ tư vấn (recommender systems) với các phương pháp tư vấn cơ bản (lọc cộng tác, lọc nội dung, lọc kết hợp). Sau đó tập trung vào giải pháp học dựa trên mạng nơ  ron đồ thị (GNN - Graph Neural Network). 
+ 
+2.	Thực nghiệm giải pháp
+• Dữ liệu thực nghiệm: tìm những bộ dữ liệu đã được công bố để thực nghiệm giải pháp (Ví dụ: Amazon Review Datasets, Yelp Dataset, TripAdvisor Dataset, Ecommerce Review Dataset (Taobao), MovieLens Datasets, Netflix Prize Dataset, Music Dataset (Last.fm)....)
+ 
+• Độ đo thực nghiệm theo qui chuẩn để thực nghiệm so sánh các giải pháp, chứ ko phải chỉ dạng liệt kê trên vài mẫu nhỏ tự nghĩ ra như các em đang làm. Cụ thể tìm hiểu các độ đo: Precision, Recall, NDCG, MRR, Coverage, Improvement .... -> Khảo sát thêm các độ đo phù hợp. Chạy thực nghiệm so sánh các giải pháp tư vấn khác nhau khi chạy trên cùng bộ dataset thì kết quả khác nhau ntn.
+Chú ý khi tìm h iểu cần đi sâu vào bản chất của phương pháp, chứ ko chỉ là chạy thư viện ra kết quả, mà cần phải hiểu và so sánh giải thích được các giải pháp khác nhau như thế nào, tính hiệu quả vì đâu mang lại. Các em làm việc này tiếp trong 2 tuần, sau báo cáo cô chi tiết toàn bộ 2 nội dung trên để cô hướng dẫn tiếp. Cô sẽ định hướng dần, sẽ kết hợp cả những nghiên cứu vừa qua của các em ở pha sau.
