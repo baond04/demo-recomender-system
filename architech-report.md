@@ -96,35 +96,40 @@
 
 ## CHƯƠNG V: THỰC NGHIỆM VÀ ĐÁNH GIÁ
 
-### 5.1. Bộ dữ liệu thực nghiệm (Dataset Specification)
-* Trình bày bảng đặc tả chi tiết bộ dữ liệu chuẩn **MovieLens 100K / 1M**: Nguồn (GroupLens), số lượng User, Item, Tương tác, Độ thưa ma trận ($Sparsity$).
-* Quy trình tiền xử lý: Bỏ rating $< 3$, lọc User có $< 5$ tương tác, chuyển thể loại phim thành ma trận TF-IDF.
+### 5.1. Thiết lập thực nghiệm và Đặc tả các Bộ dữ liệu
+* **Tổng quan các bộ dữ liệu thực nghiệm:** Giới thiệu 3 miền ứng dụng đại diện: Điện ảnh (MovieLens Latest Small), Địa điểm dịch vụ & Nhà hàng (Yelp Dataset 5-core) và Âm nhạc (Last.fm hetrec2011).
+* **Bảng đặc tả thông số tổng hợp:** Bảng so sánh đối chiếu giữa 3 bộ dữ liệu về các chỉ số: Số User ($M$), Số Item ($N$), Số tương tác ($\vert E \vert$), Mật độ tương tác, Độ thưa ma trận ($Sparsity$) và Đặc trưng thuộc tính Metadata (Genres, Business Categories, Tags).
+* **Quy trình tiền xử lý dữ liệu chung:** Chuẩn hóa tương tác ẩn ($r \ge 3.0$), Mã hóa định danh hai chiều (Index Mapping), Trích xuất ma trận đặc trưng TF-IDF, Phân tách tập dữ liệu ngẫu nhiên theo người dùng tỷ lệ 80% Train / 10% Validation / 10% Test (`seed = 42`).
+* **Cấu hình Siêu tham số hệ thống ($Hyperparameters$):** Kích thước nhúng $d = 32$, Số tầng lan truyền LightGCN $K = 2$, Tốc độ học $lr = 0.01$, Batch size 2048, Hệ số phạt $L_2 = 10^{-4}$, Trọng số mô hình Lai $\alpha = 0.6$, Tối ưu BPR Loss qua 10-20 Epochs.
 
-### 5.2. Môi trường và Cài đặt thực nghiệm (Setup & Hyperparameters)
-* Cấu hình phần cứng (Colab GPU T4) và thư viện (PyTorch, PyTorch Geometric).
-* Thiết lập Hyperparameters & Lý do lựa chọn:
-  * `Embedding dim d = 32` (Tránh Overfitting trên dữ liệu thưa).
-  * `Số tầng LightGCN K = 2` (Khai thác láng giềng 2 bước, tránh Over-smoothing).
-  * `Learning rate = 0.01`, `Batch size = 2048`, `Trọng số Hybrid alpha = 0.6`.
+### 5.2. Hệ thống các Độ đo Đánh giá Tiêu chuẩn
+*(Trình bày chi tiết ý nghĩa, công thức toán học và ví dụ tính toán bằng số cụ thể cho từng độ đo ở ngưỡng Top-K)*
+* **Precision@K:** Độ chính xác gợi ý trong Top-K. $\text{Precision}@K = \frac{\vert \text{Top-}K(u) \cap \mathcal{I}_{test}(u) \vert}{K}$.
+* **Recall@K:** Độ bao phủ sở thích thực tế trong Top-K. $\text{Recall}@K = \frac{\vert \text{Top-}K(u) \cap \mathcal{I}_{test}(u) \vert}{\vert \mathcal{I}_{test}(u) \vert}$.
+* **NDCG@K:** Chất lượng và vị trí xếp hạng của sản phẩm gợi ý đúng. $\text{DCG}@K = \sum_{r=1}^{K} \frac{I(r \in \mathcal{I}_{test}(u))}{\log_2(r + 1)}, \text{NDCG}@K = \frac{\text{DCG}@K}{\text{IDCG}@K}$.
+* **MRR@K:** Nghịch đảo thứ hạng xuất hiện của sản phẩm gợi ý đúng đầu tiên. $\text{MRR}@K = \frac{1}{\text{rank}_{first}}$.
+* **HitRate@K:** Tỷ lệ người dùng nhận được ít nhất 1 gợi ý đúng. $\text{HitRate}@K = \begin{cases} 1.0, & \text{nếu } \vert \text{Top-}K(u) \cap \mathcal{I}_{test}(u) \vert \ge 1 \\ 0.0, & \text{ngược lại} \end{cases}$.
+* **Coverage@K:** Độ bao phủ danh mục sản phẩm toàn hệ thống. $\text{Coverage}@K = \frac{\vert \bigcup_{u \in U} \text{Top-}K(u) \vert}{N}$.
 
-### 5.3. Các độ đo đánh giá (Kèm ví dụ minh họa bằng số)
-* **Precision@K:** Tỷ lệ đoán trúng trong K Item gợi ý.
-  * *Ví dụ:* Gợi ý Top 10 Item, User thích 3 Item trong đó $\rightarrow \text{Precision}@10 = 3/10 = 0.30$ ($30\%$).
-* **Recall@K:** Tỷ lệ bao phủ Item thực tế mà User thích.
-  * *Ví dụ:* Thực tế User thích 5 Item trong tập Test. Top 10 gợi ý trúng 2 Item $\rightarrow \text{Recall}@10 = 2/5 = 0.40$ ($40\%$).
-* **NDCG@K:** Đánh giá chất lượng thứ hạng xếp hạng (Item đúng ở vị trí cao được điểm tốt hơn).
-  * *Ví dụ:* Trúng Item đúng ở vị trí #1 đạt $\text{NDCG}@3 = 1.0$, nếu trúng ở vị trí #3 đạt $\text{NDCG}@3 = \frac{1/ \log_2(4)}{1} \approx 0.50$.
-* **MRR@K (Mean Reciprocal Rank):** Nghịch đảo vị trí trúng đầu tiên.
-  * *Ví dụ:* Item đúng xuất hiện sớm nhất ở vị trí thứ 2 $\rightarrow \text{RR} = 1/2 = 0.50$.
-* **HitRate@K:** Tỷ lệ User nhận được ít nhất 1 Item đúng.
-  * *Ví dụ:* Trong 100 User, có 75 User có ít nhất 1 Item trúng trong Top-K $\rightarrow \text{HitRate} = 75/100 = 0.75$ ($75\%$).
-* **Coverage (Độ bao phủ hệ thống):** Tỷ lệ Item trong toàn bộ danh mục được mang đi gợi ý.
-  * *Ví dụ:* Kho có 1000 Item. Tổng hợp gợi ý cho toàn bộ User thấy xuất hiện 250 Item khác nhau $\rightarrow \text{Coverage} = 250/1000 = 0.25$ ($25\%$).
+### 5.3. Kết quả thực nghiệm trên Miền dữ liệu Điện ảnh (MovieLens)
+* **Đặc tả miền Phim ảnh:** 609 Users, 9,742 Items, 81,763 Tương tác tích cực, Độ thưa ma trận $98.62\%$. Đặc trưng thuộc tính: 19 thể loại phim.
+* **Bảng kết quả đánh giá định lượng:** So sánh 4 mô hình (CB, MF, Hybrid, LightGCN) tại các ngưỡng Top-10 và Top-20 (kết hợp cơ chế Train Masking $S[u,i] = -\infty$).
+* **Biểu đồ & Phân tích nhận xét chuyên sâu:** Giải thích lý do LightGCN đạt hiệu năng tối ưu vượt trội nhờ khả năng học biểu diễn đa tầng từ cấu trúc Đồ thị Lưỡng phân User–Item qua cơ chế Message Passing $2\text{-hop}$.
 
-### 5.4. Kết quả thực nghiệm và Phân tích so sánh
-* Bảng kết quả so sánh 4 mô hình (CB, MF, Hybrid, LightGCN) ở các ngưỡng Top-10, Top-20.
-* **[VISUALIZE 9]:** Biểu đồ hình cột so sánh $Recall@20$ và $NDCG@20$ giữa 4 mô hình.
-* Nhận xét chuyên sâu giải thích nguyên nhân: Vì sao LightGCN cao nhất (nhờ Message Passing 2 tầng), vì sao Hybrid vượt trội MF (khắc phục Cold-start), vì sao CB có Precision thấp nhưng Coverage cao.
+### 5.4. Kết quả thực nghiệm trên Miền dữ liệu Thiết bị & Sản phẩm Âm nhạc (Amazon Musical Instruments)
+* **Đặc tả miền TMĐT Âm nhạc:** 1,429 Users, 900 Items (Thiết bị âm nhạc), 10,261 Tương tác tích cực, Dung lượng file siêu nhẹ **1.5MB** (`reviews_Musical_Instruments_5.json.gz`). Độ thưa $99.20\%$. Đặc trưng thuộc tính: Danh mục sản phẩm & Nhận xét.
+* **Bảng kết quả đánh giá định lượng:** So sánh 4 mô hình (CB, MF, Hybrid, LightGCN) tại hai ngưỡng Top-10 và Top-20.
+* **Biểu đồ & Phân tích nhận xét chuyên sâu:** Phân tích ảnh hưởng của độ thưa dữ liệu ($99.20\%$) khiến mô hình MF thuần túy bị suy giảm hiệu năng. Đánh giá vai trò của mô hình Lai (Hybrid) khi kết hợp 40% tín hiệu Lọc nội dung ($\alpha = 0.6$) giúp gia tăng Coverage và hỗ trợ gợi ý cho sản phẩm mới (Cold-start).
+
+### 5.5. Kết quả thực nghiệm trên Miền dữ liệu Âm nhạc (Last.fm)
+* **Đặc tả miền Âm nhạc:** 1,892 Users, 17,632 Items (Nghệ sĩ), 92,834 Tương tác, Độ thưa $99.72\%$. Đặc trưng thuộc tính: Thẻ gắn do người dùng định nghĩa (User Tags).
+* **Bảng kết quả đánh giá định lượng:** So sánh 4 mô hình (CB, MF, Hybrid, LightGCN) tại hai ngưỡng Top-10 và Top-20.
+* **Biểu đồ & Phân tích nhận xét chuyên sâu:** Đánh giá tác động của hành vi nghe nhạc lặp lại giúp cấu trúc đồ thị hình thành các cụm tương đồng liên kết mạnh (Clustering), tạo điều kiện cho LightGCN thu thập ngữ cảnh cộng đồng hiệu quả nhất.
+
+### 5.6. Phân tích So sánh Tổng hợp và Đánh giá Tính Tổng quát
+* **So sánh đối chiếu chéo giữa 3 miền dữ liệu:** Sử dụng biểu đồ cột nhóm tổng hợp so sánh sự chuyển giao hiệu năng (Recall@20 và NDCG@20) của LightGCN và Hybrid trên 3 tập dữ liệu (MovieLens, Yelp, Last.fm).
+* **Phân tích hiện tượng Đánh đổi (Trade-off):** Phân tích sự đánh đổi giữa Độ chính xác xếp hạng (Precision/Recall) và Độ bao phủ danh mục (Coverage).
+* **Tóm tắt kết quả Chương V:** Khẳng định tính đúng đắn, ổn định và khả năng mở rộng của giải pháp Mạng nơ-ron đồ thị (LightGCN) kết hợp cơ chế bù trừ từ Phương pháp Lai trên các ma trận dữ liệu thưa thực tế.
 
 ---
 

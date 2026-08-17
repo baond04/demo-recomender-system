@@ -1,20 +1,39 @@
+Chào em,
+Cô giao tiếp việc như sau:
+1.	Vẽ hình kiến trúc của mô hình LightGCN thể hiện rõ hơn quá trình lan truyền đa tầng xếp chồng.
+2.	Nghiên cứu tiếp về việc kết hợp GNN+GCL (Graph Contrastive Learning) nhằm tăng hiệu quả tư vấn : học dựa trên mạng nơ ron đồ thị + học tương phản
+
+Các em thực hiện tiếp  rồi gửi lại cô.
+
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Thursday, July 30, 2026 10:20 AM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: FW: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Em chào cô ạ,
+Em xin gửi lại cô báo cáo về nghiên cứu các phương pháp hệ tư vấn đã được chỉnh sửa theo như các góp ý của cô ạ.
+Nhóm em rất mong tiếp tục nhận được ý kiến nhận xét và hướng dẫn của cô để nhóm tiếp tục hoàn thiện đề tài ạ.
+Em xin chân thành cảm ơn cô!
+Trân trọng,
+ 
 From: Do Thi Lien <liendt@ptit.edu.vn> 
 Sent: Monday, July 13, 2026 9:13 AM
 To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
 Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
-
+ 
 Chào em,
 Cô đã đọc báo cáo. Cô có nhận xét như sau:
 •	Có vẻ báo cáo này các em dùng AI để viết, chưa có độ sâu hiểu về phương pháp và đọc rất rời rạc, ko logic. Đọc lại các nội dung trong mail trước cô viết. Khi trình bày các phương pháp tư vấn cần làm rõ Dữ liệu đầu vào, đầu ra, quá trình xử lý về bản chất như thế nào (đưa ra hình vẽ và giải thích trên đó) trước khi đưa ra công thức. Các công thức trình bày cũng còn lỗi ký hiệu rất nhiều (Có vẽ khi các em copy), giải thích chưa chi tiết, chưa có kèm ví dụ minh họa. 
-
+ 
 •	Các em nghiên cứu bản chất quá trình thực hiện của phương pháp trước, dùng thuật ngữ Item nói chung (Item ở đây có thể là món ăn, bài hát, quyển sách....chưa gắn vào loại item cụ thể nào cả). Việc biểu diễn phương pháp cũng cần đưa ra ở dạng tổng quát . Phần thực nghiệm thì lấy những dataset cô cho tên ở mail trước để thử trên cùng phương pháp. Như vậy chưa lệ thuộc vào food ở đây mà bắt phương pháp phải theo.
-
+ 
 •	Quá trình cài đặt cần dựa vào phương pháp mà ra các bước thực hiện, chứ ko phải giải thích rời rạc file code, ví dụ:  file đồ thị food_graph.pt xây dựng ntn, train_GCN.py - Heterogeneous LightGCN các class liên quan ntn....
-
+ 
 •	Dataset thực nghiệm cần đa dạng, chỉ rõ nguồn, thông tin trong dataset gồm những gì, tiền xử lý gì ko,...
-
+ 
 •	Phần cài đặt thực nghiệm cần viết kỹ hơn.
-
+ 
 Các em thực hiện kỹ lại những nội dung trên rồi gửi lại cô trước khi đi tiếp. 
 ________________________________________
 From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>

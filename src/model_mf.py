@@ -63,7 +63,7 @@ if HAS_TORCH:
                 P = self.user_embedding.weight # [M x d]
                 Q = self.item_embedding.weight # [N x d]
                 scores = torch.matmul(P, Q.t()) # [M x N]
-                return scores.cpu().numpy().tolist()
+                return scores.cpu().numpy()
 
 else:
     # Class fallback thuần Python/NumPy khi chưa cài PyTorch

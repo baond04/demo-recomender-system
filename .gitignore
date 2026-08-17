@@ -1,0 +1,19 @@
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Environment variables & API keys
+.env
+.env.*
+
+# Virtual environments
+.venv/
+env/
+venv/
+
+# Temporary Word lock files
+~$*.docx
+~WRL*.tmp
+*.tmp

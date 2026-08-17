@@ -124,7 +124,7 @@ if HAS_TORCH:
             with torch.no_grad():
                 user_embeds, item_embeds = self.propagate(edge_index)
                 scores = torch.matmul(user_embeds, item_embeds.t())
-                return scores.cpu().numpy().tolist()
+                return scores.cpu().numpy()
 
 else:
     # Fallback khi chưa cài PyTorch
