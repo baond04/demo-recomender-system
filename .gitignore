@@ -1,0 +1,71 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Environment
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Document files (strictly excluded as requested)
+*.docx
+*.pdf
+*.xml
+review_*.txt
+page*.xml
+teacher_request.txt
+
+# Document generation scripts & scratch files
+build_pcrs_doc.py
+generate_full_30p_docx.py
+generate_nhiemvu1_docx.py
+create_drawio_diagrams.py
+create_formula_sheet.py
+create_gnngcl_doc.py
+create_interconnected_visuals.py
+create_intuitive_visuals.py
+create_math_doc*.py
+create_results_doc.py
+fix_all_drawio.py
+fix_drawio.py
+fix_math_color.py
+fix_v8.py
+fix_visualize_*.py
+convert_drawio_bw.py
+convert_task1_drawio_bw.py
+create_all_white_file.py
+extract_omml.py
+extract_page*.py
+extract_visualize*.py
+inspect_baocao.py
+read_docs.py
+read_review*.py
+read_v3*.py
+test_altchunk*.py
+update_drawio.py
+update_fig*.py
+update_md_*.py
+update_report_actual_results.py
+write_md.py
+final_fix.py
+find_item.py
+find_review.py
+check_exp2.py
+check_p8.py
+check_pages.py
+
+# Heavy datasets / temporary storage
+food.com/
+chroma_db_test/
+
+# Old duplicate folder (already reorganized in root src/ and drawio_diagrams/)
+files_vua_sua/
+
+# IDE
+.vscode/
+.idea/
+*.swp

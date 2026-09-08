@@ -1,0 +1,84 @@
+<mxfile host="app.diagrams.net" modified="2026-08-20T09:00:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="fig_3_2_complete_loop" name="SimGCL Joint Loss Interconnected">
+    <mxGraphModel dx="1200" dy="900" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Input Graph -->
+        <mxCell id="in_g" value="ĐỒ THỊ TƯƠNG TÁC GỐC G = (U ∪ I, E)&#xa;Ma trận nhúng khởi tạo: E&lt;sup&gt;(0)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="220" y="30" width="520" height="50" as="geometry" />
+        </mxCell>
+
+        <!-- Main LightGCN Backbone -->
+        <mxCell id="backbone" value="BỘ MÃ HÓA LIGHTGCN (Chạy 1 lần duy nhất trên đồ thị gốc)&#xa;Lan truyền qua K tầng ──► Tạo vector biểu diễn tổng hợp E&lt;sup&gt;*&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="150" y="115" width="660" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Nhánh Trái: SimGCL Noise Contrastive -->
+        <mxCell id="box_noise1" value="Thêm nhiễu ngẫu nhiên +ε · Δ&lt;sub&gt;1&lt;/sub&gt;&#xa;──► Tạo View 1: Z&lt;sup&gt;(1)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="215" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="box_noise2" value="Thêm nhiễu ngẫu nhiên +ε · Δ&lt;sub&gt;2&lt;/sub&gt;&#xa;──► Tạo View 2: Z&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="280" y="215" width="180" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="box_loss_cl" value="HÀM MẤT MÁT TƯƠNG PHẢN (ℒ&lt;sub&gt;CL&lt;/sub&gt;)&#xa;InfoNCE: Kéo gần Z&lt;sup&gt;(1)&lt;/sup&gt;, Z&lt;sup&gt;(2)&lt;/sup&gt; &amp;amp; Đẩy xa nút khác" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="80" y="305" width="380" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Nhánh Phải: Main BPR Recommendation -->
+        <mxCell id="box_pred" value="Dự đoán điểm ưa thích: ŷ&lt;sub&gt;ui&lt;/sub&gt; = (e&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;)&lt;sup&gt;T&lt;/sup&gt; · e&lt;sub&gt;i&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="215" width="330" height="55" as="geometry" />
+        </mxCell>
+        <mxCell id="box_loss_bpr" value="HÀM MẤT MÁT XẾP HẠNG GỢI Ý CHÍNH (ℒ&lt;sub&gt;BPR&lt;/sub&gt;)&#xa;Tối đa hóa chênh lệch điểm (ŷ&lt;sub&gt;ui&lt;/sub&gt; − ŷ&lt;sub&gt;uj&lt;/sub&gt; &gt; 0)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=11;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="540" y="305" width="330" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Khối Tổng Hợp Joint Loss -->
+        <mxCell id="box_joint" value="TỐI ƯU HÓA LIÊN HỢP ĐA NHIỆM (JOINT LOSS OPTIMIZATION)&#xa;ℒ&lt;sub&gt;Total&lt;/sub&gt; = ℒ&lt;sub&gt;BPR&lt;/sub&gt; (Chính) + λ · ℒ&lt;sub&gt;CL&lt;/sub&gt; (Tương phản) + γ · ‖E&lt;sup&gt;(0)&lt;/sup&gt;‖&lt;sup&gt;2&lt;/sup&gt; (Chống quá khớp)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="120" y="400" width="720" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- Khối Thuật Toán Adam -->
+        <mxCell id="box_adam" value="CẬP NHẬT THAM SỐ QUA THUẬT TOÁN ADAM OPTIMIZER&#xa;Tính gradient toàn cục ──► Tự động điều chỉnh ma trận nhúng E&lt;sup&gt;(0)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="180" y="500" width="600" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- Arrows connecting pipelines -->
+        <mxCell id="c1" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="in_g" target="backbone" />
+        
+        <!-- From backbone to left noise views -->
+        <mxCell id="c_bb_n1" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.15;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="backbone" target="box_noise1" />
+        <mxCell id="c_bb_n2" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.35;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="backbone" target="box_noise2" />
+        
+        <!-- From backbone to right prediction -->
+        <mxCell id="c_bb_pred" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="backbone" target="box_pred" />
+
+        <!-- From views to L_CL -->
+        <mxCell id="c_n1_cl" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_noise1" target="box_loss_cl" />
+        <mxCell id="c_n2_cl" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_noise2" target="box_loss_cl" />
+
+        <!-- From pred to L_BPR -->
+        <mxCell id="c_pred_bpr" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_pred" target="box_loss_bpr" />
+
+        <!-- Both losses to Joint Loss -->
+        <mxCell id="c_cl_joint" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.25;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_loss_cl" target="box_joint" />
+        <mxCell id="c_bpr_joint" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.75;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_loss_bpr" target="box_joint" />
+
+        <!-- Joint Loss to Adam -->
+        <mxCell id="c_joint_adam" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=2;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_joint" target="box_adam" />
+
+        <!-- Feedback Loop Backprop to E^(0) -->
+        <mxCell id="feedback_loop" value="VÒNG LẶP LAN TRUYỀN NGƯỢC (BACKPROPAGATION): Cập nhật tham số E&lt;sup&gt;(0)&lt;/sup&gt; cho epoch tiếp theo" style="endArrow=classic;html=1;rounded=1;dashed=1;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=11;fontStyle=1;fontColor=#000000;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="box_adam" target="in_g">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="40" y="528" />
+              <mxPoint x="40" y="55" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

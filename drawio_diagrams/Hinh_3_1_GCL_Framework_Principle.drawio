@@ -1,0 +1,63 @@
+<mxfile host="app.diagrams.net" modified="2026-08-20T09:00:00.000Z" agent="Antigravity" version="21.0.0" type="device">
+  <diagram id="fig_3_1_forces" name="GCL Contrastive Forces Links">
+    <mxGraphModel dx="1200" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="827" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Source Graph Box -->
+        <mxCell id="src_g" value="ĐỒ THỊ TƯƠNG TÁC GỐC G&#xa;(Chứa nút người dùng u và các lân cận)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="270" y="30" width="420" height="55" as="geometry" />
+        </mxCell>
+
+        <!-- View 1 -->
+        <mxCell id="v1" value="GÓC NHÌN 1 (View 1)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="100" y="140" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- View 2 (Same User u) -->
+        <mxCell id="v2" value="GÓC NHÌN 2 (View 2)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="400" y="140" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- View 2 (Different User v) -->
+        <mxCell id="v_other" value="NGƯỜI DÙNG KHÁC v&#xa;Biểu diễn nhúng: z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="700" y="140" width="240" height="65" as="geometry" />
+        </mxCell>
+
+        <!-- Branching Arrows from Source -->
+        <mxCell id="br1" value="Tăng cường 1" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0.2;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src_g" target="v1" />
+        <mxCell id="br2" value="Tăng cường 2" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src_g" target="v2" />
+        <mxCell id="br3" value="Lấy mẫu người dùng khác" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;fontFamily=Times New Roman;fontSize=11;fontColor=#000000;exitX=0.8;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="src_g" target="v_other" />
+
+        <!-- POSITIVE PAIR LINK (ATTRACT FORCE) -->
+        <mxCell id="pos_link" value="CẶP TÍCH CỰC (Positive Pair) ──► KÉO LẠI GẦN NHAU (Tối đa hóa sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) ──► 1.0)" style="endArrow=classic;startArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=2.5;fontFamily=Times New Roman;fontSize=11;fontStyle=1;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v1" target="v2">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- NEGATIVE PAIR LINK (REPEL FORCE) -->
+        <mxCell id="neg_link" value="CÁC CẶP TIÊU CỰC (Negative Pairs) ──► ĐẨY RA XA NHAU (Tối thiểu hóa sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) ──► 0.0)" style="endArrow=classic;startArrow=classic;dashed=1;html=1;rounded=0;strokeColor=#000000;strokeWidth=2;fontFamily=Times New Roman;fontSize=11;fontStyle=1;fontColor=#000000;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="v2" target="v_other">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- CONTRASTIVE LOSS BOX -->
+        <mxCell id="loss_box" value="HÀM MẤT MÁT TƯƠNG PHẢN TỰ GIÁM SÁT (INFONCE LOSS)&#xa;ℒ&lt;sub&gt;CL&lt;/sub&gt; = − Σ&lt;sub&gt;u&lt;/sub&gt; ln [ exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ)  /  Σ&lt;sub&gt;v&lt;/sub&gt; exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ) ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="160" y="270" width="640" height="70" as="geometry" />
+        </mxCell>
+
+        <!-- Feed into Loss -->
+        <mxCell id="feed_v1" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.2;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v1" target="loss_box" />
+        <mxCell id="feed_v2" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v2" target="loss_box" />
+        <mxCell id="feed_vo" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v_other" target="loss_box" />
+
+        <!-- RESULT NOTE -->
+        <mxCell id="res_note" value="HIỆU QUẢ CỐT LÕI CỦA CƠ CHẾ LIÊN KẾT TƯƠNG PHẢN:&#xa;1. Chống nhiễu: Giữ vững bản sắc sở thích cốt lõi bất biến trước các xáo trộn ngẫu nhiên.&#xa;2. Trải đều biểu diễn (Uniformity): Phân tán đều các vector trên toàn bộ không gian, triệt tiêu triệt để thiên lệch sản phẩm hot (Popularity Bias) và mở rộng độ phủ gợi ý lên tới 100%." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+          <mxGeometry x="120" y="380" width="720" height="85" as="geometry" />
+        </mxCell>
+
+        <mxCell id="c_l_r" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="loss_box" target="res_note" />
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
