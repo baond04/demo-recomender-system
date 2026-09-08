@@ -6,18 +6,18 @@
         <mxCell id="1" parent="0" />
         
         <!-- User Group Box -->
-        <mxCell id="u_group" value="TẬP NGƯỜI DÙNG (USERS U)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+        <mxCell id="u_group" value="TẬP NGƯỜI DÙNG (USERS U)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
           <mxGeometry x="100" y="50" width="220" height="360" as="geometry" />
         </mxCell>
         
         <!-- User Nodes -->
-        <mxCell id="u1" value="User u&lt;sub&gt;1&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="u1" value="User u&lt;sub&gt;1&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="145" y="100" width="130" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="u2" value="User u&lt;sub&gt;2&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="u2" value="User u&lt;sub&gt;2&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="145" y="180" width="130" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="u3" value="User u&lt;sub&gt;3&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="u3" value="User u&lt;sub&gt;3&lt;/sub&gt;" style="ellipse;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="145" y="260" width="130" height="45" as="geometry" />
         </mxCell>
         <mxCell id="u_dots" value="... u&lt;sub&gt;M&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
@@ -25,18 +25,18 @@
         </mxCell>
 
         <!-- Item Group Box -->
-        <mxCell id="i_group" value="TẬP SẢN PHẨM (ITEMS I)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
+        <mxCell id="i_group" value="TẬP SẢN PHẨM (ITEMS I)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;verticalAlign=top;spacingTop=8;" vertex="1" parent="1">
           <mxGeometry x="620" y="50" width="220" height="360" as="geometry" />
         </mxCell>
 
         <!-- Item Nodes -->
-        <mxCell id="i1" value="Item i&lt;sub&gt;1&lt;/sub&gt;&#xa;(Sản phẩm dùng chung)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="i1" value="Item i&lt;sub&gt;1&lt;/sub&gt;&#xa;(Sản phẩm dùng chung)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="655" y="95" width="150" height="55" as="geometry" />
         </mxCell>
-        <mxCell id="i2" value="Item i&lt;sub&gt;2&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="i2" value="Item i&lt;sub&gt;2&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="655" y="180" width="150" height="45" as="geometry" />
         </mxCell>
-        <mxCell id="i3" value="Item i&lt;sub&gt;3&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
+        <mxCell id="i3" value="Item i&lt;sub&gt;3&lt;/sub&gt;" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;" vertex="1" parent="1">
           <mxGeometry x="655" y="260" width="150" height="45" as="geometry" />
         </mxCell>
         <mxCell id="i_dots" value="... i&lt;sub&gt;N&lt;/sub&gt;" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontFamily=Times New Roman;fontSize=14;fontStyle=1;fontColor=#000000;" vertex="1" parent="1">
@@ -58,7 +58,7 @@
         </mxCell>
 
         <!-- Collaborative Bridge Highlight -->
-        <mxCell id="bridge_box" value="CẦU NỐI CỘNG TÁC GIÁN TIẾP:&#xa;u&lt;sub&gt;1&lt;/sub&gt; và u&lt;sub&gt;2&lt;/sub&gt; liên kết với nhau qua sản phẩm dùng chung i&lt;sub&gt;1&lt;/sub&gt;&#xa;──► Đường truyền 2-hop: u&lt;sub&gt;1&lt;/sub&gt; ── i&lt;sub&gt;1&lt;/sub&gt; ── u&lt;sub&gt;2&lt;/sub&gt;" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;align=center;" vertex="1" parent="1">
+        <mxCell id="bridge_box" value="CẦU NỐI CỘNG TÁC GIÁN TIẾP:&#xa;u&lt;sub&gt;1&lt;/sub&gt; và u&lt;sub&gt;2&lt;/sub&gt; liên kết với nhau qua sản phẩm dùng chung i&lt;sub&gt;1&lt;/sub&gt;&#xa;──► Đường truyền 2-hop: u&lt;sub&gt;1&lt;/sub&gt; ── i&lt;sub&gt;1&lt;/sub&gt; ── u&lt;sub&gt;2&lt;/sub&gt;" style="rounded=1;dashed=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;align=center;" vertex="1" parent="1">
           <mxGeometry x="270" y="440" width="400" height="60" as="geometry" />
         </mxCell>
 

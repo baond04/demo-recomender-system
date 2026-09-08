@@ -6,22 +6,22 @@
         <mxCell id="1" parent="0" />
 
         <!-- Source Graph Box -->
-        <mxCell id="src_g" value="ĐỒ THỊ TƯƠNG TÁC GỐC G&#xa;(Chứa nút người dùng u và các lân cận)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
+        <mxCell id="src_g" value="ĐỒ THỊ TƯƠNG TÁC GỐC G&#xa;(Chứa nút người dùng u và các lân cận)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=13;fontStyle=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="270" y="30" width="420" height="55" as="geometry" />
         </mxCell>
 
         <!-- View 1 -->
-        <mxCell id="v1" value="GÓC NHÌN 1 (View 1)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+        <mxCell id="v1" value="GÓC NHÌN 1 (View 1)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="100" y="140" width="240" height="65" as="geometry" />
         </mxCell>
 
         <!-- View 2 (Same User u) -->
-        <mxCell id="v2" value="GÓC NHÌN 2 (View 2)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+        <mxCell id="v2" value="GÓC NHÌN 2 (View 2)&#xa;Biểu diễn nhúng: z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="400" y="140" width="240" height="65" as="geometry" />
         </mxCell>
 
         <!-- View 2 (Different User v) -->
-        <mxCell id="v_other" value="NGƯỜI DÙNG KHÁC v&#xa;Biểu diễn nhúng: z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+        <mxCell id="v_other" value="NGƯỜI DÙNG KHÁC v&#xa;Biểu diễn nhúng: z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="700" y="140" width="240" height="65" as="geometry" />
         </mxCell>
 
@@ -41,7 +41,7 @@
         </mxCell>
 
         <!-- CONTRASTIVE LOSS BOX -->
-        <mxCell id="loss_box" value="HÀM MẤT MÁT TƯƠNG PHẢN TỰ GIÁM SÁT (INFONCE LOSS)&#xa;ℒ&lt;sub&gt;CL&lt;/sub&gt; = − Σ&lt;sub&gt;u&lt;/sub&gt; ln [ exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ)  /  Σ&lt;sub&gt;v&lt;/sub&gt; exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ) ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
+        <mxCell id="loss_box" value="HÀM MẤT MÁT TƯƠNG PHẢN TỰ GIÁM SÁT (INFONCE LOSS)&#xa;ℒ&lt;sub&gt;CL&lt;/sub&gt; = − Σ&lt;sub&gt;u&lt;/sub&gt; ln [ exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ)  /  Σ&lt;sub&gt;v&lt;/sub&gt; exp(sim(z&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;(1)&lt;/sup&gt;, z&lt;sub&gt;v&lt;/sub&gt;&lt;sup&gt;(2)&lt;/sup&gt;) / τ) ]" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=2;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;fontStyle=1;align=center;" vertex="1" parent="1">
           <mxGeometry x="160" y="270" width="640" height="70" as="geometry" />
         </mxCell>
 
@@ -51,7 +51,7 @@
         <mxCell id="feed_vo" style="endArrow=classic;html=1;rounded=0;strokeColor=#000000;strokeWidth=1.5;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.8;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="v_other" target="loss_box" />
 
         <!-- RESULT NOTE -->
-        <mxCell id="res_note" value="HIỆU QUẢ CỐT LÕI CỦA CƠ CHẾ LIÊN KẾT TƯƠNG PHẢN:&#xa;1. Chống nhiễu: Giữ vững bản sắc sở thích cốt lõi bất biến trước các xáo trộn ngẫu nhiên.&#xa;2. Trải đều biểu diễn (Uniformity): Phân tán đều các vector trên toàn bộ không gian, triệt tiêu triệt để thiên lệch sản phẩm hot (Popularity Bias) và mở rộng độ phủ gợi ý lên tới 100%." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
+        <mxCell id="res_note" value="HIỆU QUẢ CỐT LÕI CỦA CƠ CHẾ LIÊN KẾT TƯƠNG PHẢN:&#xa;1. Chống nhiễu: Giữ vững bản sắc sở thích cốt lõi bất biến trước các xáo trộn ngẫu nhiên.&#xa;2. Trải đều biểu diễn (Uniformity): Phân tán đều các vector trên toàn bộ không gian, triệt tiêu triệt để thiên lệch sản phẩm hot (Popularity Bias) và mở rộng độ phủ gợi ý lên tới 100%." style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFFFF;strokeColor=#000000;strokeWidth=1.5;fontColor=#000000;fontFamily=Times New Roman;fontSize=12;align=left;spacingLeft=15;" vertex="1" parent="1">
           <mxGeometry x="120" y="380" width="720" height="85" as="geometry" />
         </mxCell>
 

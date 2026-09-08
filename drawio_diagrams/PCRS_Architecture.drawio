@@ -12,7 +12,7 @@
 
     <!-- ========== USER ========== -->
     <mxCell id="user" value="👤 Người Dùng&#xa;user_id, q&lt;sub&gt;t&lt;/sub&gt;" 
-      style="shape=mxgraph.cisco.computers_and_peripherals.pc;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;fontSize=11;" vertex="1" parent="1">
+      style="shape=mxgraph.cisco.computers_and_peripherals.pc;fillColor=#FFFFFF;strokeColor=#000000;fontStyle=1;fontSize=11;" vertex="1" parent="1">
       <mxGeometry x="60" y="250" width="100" height="80" as="geometry" />
     </mxCell>
 
@@ -28,7 +28,7 @@
 
     <!-- ========== PHASE 1 BOX ========== -->
     <mxCell id="phase1_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#fff2cc;strokeColor=#d6b656;opacity=30;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="200" y="150" width="560" height="380" as="geometry" />
     </mxCell>
     <mxCell id="phase1_label" value="⚡ PHASE 1 — PARALLEL RETRIEVAL" 
@@ -38,7 +38,7 @@
 
     <!-- Phase 1A: RAG -->
     <mxCell id="phase1a_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;opacity=50;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="220" y="195" width="240" height="300" as="geometry" />
     </mxCell>
     <mxCell id="phase1a_label" value="📚 Phase 1A — RAG Retrieval" 
@@ -47,17 +47,17 @@
     </mxCell>
 
     <mxCell id="encoder" value="Text Encoder&#xa;(sentence-transformers&#xa;all-MiniLM-L6-v2)&#xa;q&lt;sub&gt;t&lt;/sub&gt; → v&lt;sub&gt;q&lt;/sub&gt; ∈ ℝ&lt;sup&gt;384&lt;/sup&gt;" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="235" y="225" width="210" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="chromadb" value="🗃 ChromaDB&#xa;Vector Database&#xa;Conversation Store&#xa;(N turns, cosine sim)" 
-      style="shape=cylinder3;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      style="shape=cylinder3;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="255" y="315" width="170" height="80" as="geometry" />
     </mxCell>
 
     <mxCell id="topk" value="Top-K Đoạn Hội Thoại&#xa;(MMR Reranking)&#xa;score = α·sem + (1-α)·rec" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#d5e8d4;strokeColor=#82b366;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="235" y="415" width="210" height="60" as="geometry" />
     </mxCell>
 
@@ -72,7 +72,7 @@
 
     <!-- Phase 1B: GNN+GCL -->
     <mxCell id="phase1b_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;opacity=50;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="490" y="195" width="250" height="300" as="geometry" />
     </mxCell>
     <mxCell id="phase1b_label" value="🎯 Phase 1B — GNN+GCL" 
@@ -81,17 +81,17 @@
     </mxCell>
 
     <mxCell id="lightgcn" value="LightGCN Encoder&#xa;K=2 layers&#xa;e* = (1/K+1) Σ e&lt;sup&gt;(k)&lt;/sup&gt;" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="505" y="225" width="220" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="gcl" value="GCL (SimGCL)&#xa;z' = z + ε·sign(Δz)&#xa;L&lt;sub&gt;CL&lt;/sub&gt; = InfoNCE&#xa;L&lt;sub&gt;total&lt;/sub&gt; = L&lt;sub&gt;BPR&lt;/sub&gt; + λ·L&lt;sub&gt;CL&lt;/sub&gt;" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="505" y="315" width="220" height="80" as="geometry" />
     </mxCell>
 
     <mxCell id="topn" value="Top-N Items&#xa;ŷ&lt;sub&gt;ui&lt;/sub&gt; = e&lt;sub&gt;u&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt; · e&lt;sub&gt;i&lt;/sub&gt;&lt;sup&gt;*&lt;/sup&gt;&#xa;(với metadata: title, genre, tags)" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#dae8fc;strokeColor=#6c8ebf;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="505" y="415" width="220" height="60" as="geometry" />
     </mxCell>
 
@@ -106,7 +106,7 @@
 
     <!-- ========== PHASE 2 BOX ========== -->
     <mxCell id="phase2_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;opacity=30;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="820" y="150" width="330" height="380" as="geometry" />
     </mxCell>
     <mxCell id="phase2_label" value="🔗 PHASE 2 — CONTEXT FUSION" 
@@ -115,12 +115,12 @@
     </mxCell>
 
     <mxCell id="prompt_builder" value="📝 Prompt Builder&#xa;─────────────────&#xa;[SYSTEM] Vai trò trợ lý&#xa;[HISTORY] Lịch sử ngắn&#xa;[CONTEXT] Top-K đoạn RAG&#xa;[RECS] Top-N items&#xa;[QUERY] q&lt;sub&gt;t&lt;/sub&gt; + nhiệm vụ" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;align=left;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;align=left;" vertex="1" parent="1">
       <mxGeometry x="840" y="195" width="290" height="200" as="geometry" />
     </mxCell>
 
     <mxCell id="token_est" value="Token Estimator&#xa;≈ len(prompt) / 3" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#ffe6cc;strokeColor=#d79b00;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="840" y="415" width="290" height="50" as="geometry" />
     </mxCell>
 
@@ -145,7 +145,7 @@
 
     <!-- ========== PHASE 3 BOX ========== -->
     <mxCell id="phase3_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;opacity=30;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="1210" y="150" width="330" height="380" as="geometry" />
     </mxCell>
     <mxCell id="phase3_label" value="✨ PHASE 3 — RESPONSE GENERATION" 
@@ -154,12 +154,12 @@
     </mxCell>
 
     <mxCell id="gemini" value="🤖 Gemini API&#xa;(gemini-1.5-flash)&#xa;─────────────────&#xa;temperature = 0.7&#xa;max_tokens = 1024&#xa;retry = 2" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="1225" y="195" width="290" height="120" as="geometry" />
     </mxCell>
 
     <mxCell id="llm_response" value="LLMResponse&#xa;─────────────────&#xa;• text (phản hồi tự nhiên)&#xa;• suggested_items (IDs)&#xa;• tokens_used&#xa;• latency_ms" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f8cecc;strokeColor=#b85450;fontSize=10;align=left;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;align=left;" vertex="1" parent="1">
       <mxGeometry x="1225" y="335" width="290" height="100" as="geometry" />
     </mxCell>
 
@@ -180,7 +180,7 @@
 
     <!-- ========== FEEDBACK LOOP ========== -->
     <mxCell id="feedback_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;opacity=40;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="200" y="580" width="1340" height="160" as="geometry" />
     </mxCell>
     <mxCell id="feedback_label" value="🔄 FEEDBACK LOOP" 
@@ -189,22 +189,22 @@
     </mxCell>
 
     <mxCell id="fb_save" value="💾 Lưu vào ConversationStore&#xa;(ChromaDB)&#xa;turn = {query, response, items}" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="225" y="615" width="220" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="fb_accept" value="✅ User Accept Item&#xa;→ update_interaction()&#xa;→ invalidate_cache()" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="525" y="615" width="220" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="fb_graph" value="📊 Update Interaction Graph&#xa;user_item_train[u].add(i)&#xa;→ Phục vụ exclude_seen" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="825" y="615" width="220" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="fb_retrain" value="🔁 Periodic Re-train&#xa;(Optional - Async)&#xa;Khi đủ new interactions" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#e1d5e7;strokeColor=#9673a6;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="1135" y="615" width="220" height="70" as="geometry" />
     </mxCell>
 
@@ -228,17 +228,17 @@
 
     <!-- Response back to user -->
     <mxCell id="arr_resp_user" edge="1" source="llm_response" target="user" parent="1"
-      style="edgeStyle=elbowEdgeStyle;elbow=orthogonal;exitX=0.5;exitY=1;entryX=0.5;entryY=1;curved=1;strokeColor=#b85450;strokeWidth=2;">
+      style="edgeStyle=elbowEdgeStyle;elbow=orthogonal;exitX=0.5;exitY=1;entryX=0.5;entryY=1;curved=1;strokeColor=#000000;strokeWidth=2;">
       <mxGeometry relative="1" as="geometry"><Array as="points"><mxPoint x="1370" y="780"/><mxPoint x="110" y="780"/></Array></mxGeometry>
     </mxCell>
     <mxCell id="arr_resp_label2" value="Phản hồi tự nhiên" 
-      style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontStyle=1;fontSize=10;strokeColor=#b85450;" vertex="1" connectable="0" parent="arr_resp_user">
+      style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;fontStyle=1;fontSize=10;strokeColor=#000000;" vertex="1" connectable="0" parent="arr_resp_user">
       <mxGeometry x="0.2" relative="1" as="geometry"><mxPoint as="offset" /></mxGeometry>
     </mxCell>
 
     <!-- ========== DATASETS ========== -->
     <mxCell id="datasets_box" value="" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;opacity=50;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;" vertex="1" parent="1">
       <mxGeometry x="200" y="760" width="1340" height="120" as="geometry" />
     </mxCell>
     <mxCell id="datasets_label" value="📦 SYNTHETIC CONVERSATION DATA SOURCES" 
@@ -247,17 +247,17 @@
     </mxCell>
 
     <mxCell id="ml_ds" value="🎬 MovieLens ml-latest-small&#xa;100,836 ratings | 610 users&#xa;9,724 phim | 3,683 tags&#xa;→ 500 synthetic turns" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="225" y="795" width="230" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="lfm_ds" value="🎵 LastFM hetrec2011-2k&#xa;92,834 user-artist interactions&#xa;17,632 nghệ sĩ&#xa;→ 300 synthetic turns" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="725" y="795" width="230" height="70" as="geometry" />
     </mxCell>
 
     <mxCell id="amz_ds" value="🎸 Amazon Musical Instruments&#xa;10,261 reviews&#xa;Nội dung review làm context&#xa;→ 300 synthetic turns" 
-      style="rounded=1;whiteSpace=wrap;fillColor=#f5f5f5;strokeColor=#666666;fontSize=10;" vertex="1" parent="1">
+      style="rounded=1;whiteSpace=wrap;fillColor=#FFFFFF;strokeColor=#000000;fontSize=10;" vertex="1" parent="1">
       <mxGeometry x="1205" y="795" width="230" height="70" as="geometry" />
     </mxCell>
 
