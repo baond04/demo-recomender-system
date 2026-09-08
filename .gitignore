@@ -60,6 +60,8 @@ check_pages.py
 
 # Heavy datasets / temporary storage
 food.com/
+foodcom_data/
+create_foodcom_data.py
 chroma_db_test/
 
 # Old duplicate folder (already reorganized in root src/ and drawio_diagrams/)

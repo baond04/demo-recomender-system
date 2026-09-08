@@ -70,7 +70,6 @@ Hệ thống được thiết kế theo kiến trúc **2 nhánh song song** (Dua
 │       └── generate_synthetic_conversations.py # Sinh dữ liệu hội thoại mẫu & benchmark
 │
 ├── ml-latest-small/              # Bộ dữ liệu MovieLens (movies, ratings, tags, links)
-├── foodcom_data/                 # Dữ liệu ẩm thực Food.com đã xử lý
 ├── checkpoints/                  # Trọng số mô hình đã huấn luyện (simgcl_best.pth)
 ├── drawio_diagrams/              # Sơ đồ thiết kế kiến trúc Draw.io
 │
