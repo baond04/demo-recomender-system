@@ -1,0 +1,17 @@
+# requirements_rag.txt
+# ====================
+# Dependencies bổ sung cho GNN+GCL+RAG module.
+# Cài đặt: pip install -r requirements_rag.txt
+
+# Vector Database
+chromadb>=0.4.0
+
+# Text Embedding
+sentence-transformers>=2.2.0
+
+# Google Gemini API (mới nhất - thay thế google-generativeai đã deprecated)
+google-genai>=2.0.0
+
+# Các thư viện cơ bản
+numpy>=1.21.0
+torch>=2.0.0
