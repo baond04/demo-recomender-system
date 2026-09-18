@@ -13,14 +13,25 @@ import json
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
-sys.path.append(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src'))
+project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from data_loader import DataLoaderMovieLens, DataLoaderLastFM, DataLoaderAmazon
-from model_cb import ContentBasedRecommender
-from model_mf import MatrixFactorization, HAS_TORCH
-from model_hybrid import HybridRecommender
-from model_lightgcn import LightGCNRecommender
-from model_lightgcn_gcl import LightGCN_GCL, SimGCL, train_gcl_model
+try:
+    from data_loader_tripadvisor import DataLoaderTripAdvisor
+    from data_loader_yelp import DataLoaderYelp
+    from data_loader_taobao import DataLoaderTaobao
+    from data_loader_netflix import DataLoaderNetflix
+except ImportError:
+    from data_loader import DataLoaderTripAdvisor, DataLoaderYelp, DataLoaderTaobao, DataLoaderNetflix
+
+
+from GP1_model_cb import ContentBasedRecommender
+from GP2_model_mf import MatrixFactorization, HAS_TORCH
+from GP3_model_hybrid import HybridRecommender
+from GP4_model_lightgcn import LightGCNRecommender
+from GP5_model_lightgcn_gcl import LightGCN_GCL, SimGCL, train_gcl_model
+from GP6_model_rag import VanillaRAGRecommender
 from metrics import evaluate_model
 
 if HAS_TORCH:
@@ -191,33 +202,70 @@ def run_all_models(dataset_name, data):
     print(f"        Recall@20={results['SimGCL'].get('Recall@20',0):.4f}  NDCG@20={results['SimGCL'].get('NDCG@20',0):.4f}")
 
     # ──────────────────────────────
-    # In bảng kết quả
+    # 6. Vanilla RAG (Truy xuất CSDL Item ngữ nghĩa văn bản thuần túy)
     # ──────────────────────────────
+    print(f"\n  [6/7] Vanilla RAG (Semantic Item Retrieval baseline)...", flush=True)
+    model_rag = VanillaRAGRecommender(tfidf_features, num_users, num_items)
+    model_rag.fit(train_user_items)
+    score_rag = model_rag.predict_score_matrix()
+    results["Vanilla RAG"] = evaluate_model(score_rag, train_user_items, test_user_items, num_items, k_list=K_LIST, item_features=tfidf_features)
+    print(f"        Recall@20={results['Vanilla RAG'].get('Recall@20',0):.4f}  NDCG@20={results['Vanilla RAG'].get('NDCG@20',0):.4f}")
+
+    # ──────────────────────────────
+    # 7. GNN + GCL + RAG (Giải pháp đề xuất toàn diện của Đồ án)
+    # ──────────────────────────────
+    print(f"\n  [7/7] GNN + GCL + RAG (Proposed System)...", flush=True)
+    rag_min = score_rag.min(axis=1, keepdims=True)
+    rag_max = score_rag.max(axis=1, keepdims=True)
+    rag_denom = np.where((rag_max - rag_min) == 0, 1.0, (rag_max - rag_min))
+    norm_rag = (score_rag - rag_min) / rag_denom
+
+    score_simgcl_arr = np.asarray(score_simgcl, dtype=np.float32)
+    gcl_min = score_simgcl_arr.min(axis=1, keepdims=True)
+    gcl_max = score_simgcl_arr.max(axis=1, keepdims=True)
+    gcl_denom = np.where((gcl_max - gcl_min) == 0, 1.0, (gcl_max - gcl_min))
+    norm_gcl = (score_simgcl_arr - gcl_min) / gcl_denom
+
+    score_gnn_gcl_rag = 0.75 * norm_gcl + 0.25 * norm_rag
+    results["GNN+GCL+RAG"] = evaluate_model(score_gnn_gcl_rag, train_user_items, test_user_items, num_items, k_list=K_LIST, item_features=tfidf_features)
+    print(f"        Recall@20={results['GNN+GCL+RAG'].get('Recall@20',0):.4f}  NDCG@20={results['GNN+GCL+RAG'].get('NDCG@20',0):.4f}")
+
+    # ──────────────────────────────
+    # In bảng kết quả toàn diện 11 độ đo
+    # ──────────────────────────────
+
     for k in K_LIST:
-        print(f"\n  {'─'*100}")
-        print(f"  KẾT QUẢ {dataset_name} — Top-{k}")
-        print(f"  {'─'*100}")
-        hdr = f"  {'Mô hình':<22} | {'Precision':<10} | {'Recall':<10} | {'NDCG':<10} | {'MRR':<10} | {'Coverage':<10}"
+        print(f"\n  {'─'*130}")
+        print(f"  KẾT QUẢ {dataset_name} — Top-{k} [Đánh giá toàn diện các độ đo]")
+        print(f"  {'─'*130}")
+        hdr = (f"  {'Mô hình':<22} | {'Precision':<9} | {'Recall':<9} | {'NDCG':<9} | {'MRR':<9} | "
+               f"{'Coverage':<9} | {'HitRate':<9} | {'F1':<9} | {'MAP':<9} | {'Novelty':<9} | {'Diversity':<9}")
         print(hdr)
-        print(f"  {'─'*100}")
+        print(f"  {'─'*130}")
         for mname, res in results.items():
             p = res.get(f"Precision@{k}", 0.0)
             r = res.get(f"Recall@{k}", 0.0)
             n = res.get(f"NDCG@{k}", 0.0)
             m = res.get(f"MRR@{k}", 0.0)
             c = res.get(f"Coverage@{k}", 0.0)
-            print(f"  {mname:<22} | {p:<10.4f} | {r:<10.4f} | {n:<10.4f} | {m:<10.4f} | {c:<10.4f}")
-        print(f"  {'─'*100}")
+            hr = res.get(f"HitRate@{k}", 0.0)
+            f1 = res.get(f"F1@{k}", 0.0)
+            map_k = res.get(f"MAP@{k}", 0.0)
+            nov = res.get(f"Novelty@{k}", 0.0)
+            div = res.get(f"Diversity@{k}", 0.0)
+            print(f"  {mname:<22} | {p:<9.4f} | {r:<9.4f} | {n:<9.4f} | {m:<9.4f} | "
+                  f"{c:<9.4f} | {hr:<9.4f} | {f1:<9.4f} | {map_k:<9.4f} | {nov:<9.4f} | {div:<9.4f}")
+        print(f"  {'─'*130}")
 
     return results
 
 
 def main():
-    project_dir = os.path.dirname(os.path.abspath(__file__))
+    project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     random.seed(42)
 
     print("="*80)
-    print("  CHẠY THỰC NGHIỆM TOÀN BỘ — GNN + GCL")
+    print("  CHẠY THỰC NGHIỆM TOÀN BỘ CÁC GIẢI PHÁP SO SÁNH (GP1 -> GP6)")
     print(f"  PyTorch: {'CÓ (' + ('GPU' if (HAS_TORCH and torch.cuda.is_available()) else 'CPU') + ')' if HAS_TORCH else 'KHÔNG (chạy numpy fallback)'}")
     print("="*80)
 
@@ -250,6 +298,45 @@ def main():
     except Exception as ex:
         print(f"  LỖI: {ex}")
 
+    print("\n[Loading] TripAdvisor Hotel Reviews...", flush=True)
+    try:
+        datasets["TripAdvisor"] = DataLoaderTripAdvisor(
+            os.path.join(project_dir, "TripAdvisor_Dataset", "tripadvisor_hotel_reviews.parquet")
+        ).prepare_data()
+        print(f"  OK: {datasets['TripAdvisor']['num_users']} users, {datasets['TripAdvisor']['num_items']} items")
+    except Exception as ex:
+        print(f"  LỖI: {ex}")
+
+    print("\n[Loading] Yelp2018...", flush=True)
+    try:
+        datasets["Yelp"] = DataLoaderYelp(
+            os.path.join(project_dir, "Yelp_Dataset")
+        ).prepare_data()
+        print(f"  OK: {datasets['Yelp']['num_users']} users, {datasets['Yelp']['num_items']} items")
+    except Exception as ex:
+        print(f"  LỖI: {ex}")
+
+    print("\n[Loading] Taobao User Behavior...", flush=True)
+    try:
+        datasets["Taobao"] = DataLoaderTaobao(
+            os.path.join(project_dir, "Taobao_Dataset", "taobao.parquet")
+        ).prepare_data()
+        print(f"  OK: {datasets['Taobao']['num_users']} users, {datasets['Taobao']['num_items']} items")
+    except Exception as ex:
+        print(f"  LỖI: {ex}")
+
+    print("\n[Loading] Netflix Shows...", flush=True)
+    try:
+        datasets["Netflix"] = DataLoaderNetflix(
+            os.path.join(project_dir, "Netflix_Dataset", "netflix.parquet")
+        ).prepare_data()
+        print(f"  OK: {datasets['Netflix']['num_users']} users, {datasets['Netflix']['num_items']} items")
+    except Exception as ex:
+        print(f"  LỖI: {ex}")
+
+
+
+
     all_results = {}
     for ds_name, data in datasets.items():
         all_results[ds_name] = run_all_models(ds_name, data)
@@ -261,19 +348,38 @@ def main():
     print(f"\n[DONE] Kết quả đã lưu tại: {out_path}")
 
     # In bảng tổng hợp cuối
-    print("\n" + "="*100)
-    print("  BẢNG TỔNG HỢP — RECALL@20 & NDCG@20 TRÊN 3 BỘ DỮ LIỆU")
-    print("="*100)
-    print(f"  {'Bộ dữ liệu':<22} | {'Mô hình':<22} | {'Recall@20':<11} | {'NDCG@20':<11} | {'MRR@20':<11}")
-    print("  " + "-"*82)
+    print("\n" + "="*112)
+    print("  BẢNG TỔNG HỢP — RECALL@20 & NDCG@20 TRÊN TOÀN BỘ 7 BỘ DỮ LIỆU")
+    print("="*112)
+    print(f"  {'Bộ dữ liệu':<22} | {'Mô hình':<22} | {'Recall@20':<11} | {'NDCG@20':<11} | {'HitRate@20':<11} | {'MRR@20':<11}")
+    print("  " + "-"*96)
     for ds_name, res_dict in all_results.items():
         for mname, res in res_dict.items():
             r20 = res.get("Recall@20", 0.0)
             n20 = res.get("NDCG@20", 0.0)
+            hr20 = res.get("HitRate@20", 0.0)
             m20 = res.get("MRR@20", 0.0)
-            print(f"  {ds_name:<22} | {mname:<22} | {r20:<11.4f} | {n20:<11.4f} | {m20:<11.4f}")
-        print("  " + "-"*82)
+            print(f"  {ds_name:<22} | {mname:<22} | {r20:<11.4f} | {n20:<11.4f} | {hr20:<11.4f} | {m20:<11.4f}")
+        print("  " + "-"*96)
+
+    # In bảng Tỷ lệ cải thiện (Improvement %) của SimGCL so với Baseline LightGCN
+    print("\n" + "="*112)
+    print("  BẢNG TỶ LỆ CẢI THIỆN IMPROVEMENT (%) CỦA SIMGCL SO VỚI BASELINE LIGHTGCN")
+    print("="*112)
+    print(f"  {'Bộ dữ liệu':<22} | {'LightGCN Recall':<16} | {'SimGCL Recall':<16} | {'Improvement Recall':<18} | {'Improvement NDCG':<18}")
+    print("  " + "-"*96)
+    for ds_name, res_dict in all_results.items():
+        lg_r = res_dict.get("LightGCN", {}).get("Recall@20", 0.0)
+        sim_r = res_dict.get("SimGCL", {}).get("Recall@20", 0.0)
+        lg_n = res_dict.get("LightGCN", {}).get("NDCG@20", 0.0)
+        sim_n = res_dict.get("SimGCL", {}).get("NDCG@20", 0.0)
+
+        imp_r = ((sim_r - lg_r) / lg_r * 100.0) if lg_r > 0 else 0.0
+        imp_n = ((sim_n - lg_n) / lg_n * 100.0) if lg_n > 0 else 0.0
+        print(f"  {ds_name:<22} | {lg_r:<16.4f} | {sim_r:<16.4f} | {f'+{imp_r:.2f}%':<18} | {f'+{imp_n:.2f}%':<18}")
+    print("  " + "-"*96)
 
 
 if __name__ == "__main__":
     main()
+

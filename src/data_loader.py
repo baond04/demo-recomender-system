@@ -21,6 +21,16 @@ from collections import defaultdict
 if hasattr(sys.stdout, 'reconfigure'):
     sys.stdout.reconfigure(encoding='utf-8')
 
+try:
+    from data_loader_tripadvisor import DataLoaderTripAdvisor
+    from data_loader_yelp import DataLoaderYelp
+    from data_loader_taobao import DataLoaderTaobao
+    from data_loader_netflix import DataLoaderNetflix
+except ImportError:
+    pass
+
+
+
 
 # ==============================================================================
 # 1. DATA LOADER CHO MOVIELENS 100K

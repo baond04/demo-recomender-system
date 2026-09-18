@@ -67,6 +67,14 @@ food.com/
 foodcom_data/
 create_foodcom_data.py
 chroma_db_test/
+TripAdvisor_Dataset/
+Yelp_Dataset/
+Taobao_Dataset/
+Netflix_Dataset/
+*.parquet
+
+
+
 
 # Old duplicate folder (already reorganized in root src/ and drawio_diagrams/)
 files_vua_sua/

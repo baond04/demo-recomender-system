@@ -1,15 +1,78 @@
+1.	Các em đăng ký tên đề tài trên hệ thống tốt nghiệp với tên : "Nghiên cứu xây dựng trợ lý hội thoại AI cá nhân hóa người dùng trong quản lý nhà hàng" 
+2.	Báo cáo hiện tại cần làm kỹ lại : phần Thực nghiệm giải pháp:
+a.	Dữ liệu thực nghiệm: đa dạng thử nghiệm trên một số bộ dữ liệu  khác nhau đã được công bố để thực nghiệm giải pháp (Ví dụ: Amazon Review Datasets, Yelp Dataset, TripAdvisor Dataset, Ecommerce Review Dataset (Taobao), MovieLens Datasets, Netflix Prize Dataset, Music Dataset (Last.fm)....)
+b.	Độ đo thực nghiệm theo qui chuẩn để thực nghiệm so sánh các giải pháp: Precision, Recall, NDCG, MRR, Coverage, Improvement .... -> Khảo sát thêm các độ đo phù hợp. Chạy thực nghiệm so sánh các giải pháp tư vấn khác nhau khi chạy trên cùng bộ dataset thì kết quả khác nhau ntn.
+
+
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Sunday, September 13, 2026 11:58 PM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Em thưa cô em xin phép nộp báo cáo về nghiên cứu sử dụng GNN+GCL+RAG  ạ, mong cô nhận xét và cho chúng em hướng xử lý tiếp theo ạ.
+ 
+From: Do Thi Lien <liendt@ptit.edu.vn> 
+Sent: Sunday, September 6, 2026 6:05 AM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Ok em.
+ 
+Get Outlook for Android
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Sunday, 06 September 2026 02:15:44
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Cô ơi em xin lỗi vì bị miss mất mail này của cô ạ, em bị lướt nhầm vào lưu trữ nên không thấy mail này ạ, chúng em sẽ cố gắng làm nhanh nhất để báo cáo cô ạ.
+Em thành thật xin lỗi cô ạ.
+ 
+Tải Outlook for iOS
+________________________________________
+Từ: Do Thi Lien <liendt@ptit.edu.vn>
+Đã gửi: Thứ Sáu, tháng 8 21, 2026 5:32 CH
+Tới: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Chủ đề: Re: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Các em thực hiện tiếp việc sau: Kết hợp GNN+GCL+RAG cho bài toán Personalized conversational recommendations.
+Ý tưởng là:
+1.	Khi người dùng gửi một câu hỏi, hệ thống thực hiện tìm kiếm ngữ nghĩa qua CSDL vector để tìm các đoạn hội thoại liên quan nhất với truy vấn hiện tại. Những đoạn này giúp hệ thống hiểu ngữ cảnh hội thoại.
+2.	Đồng thời với bước 1 khai thác thông tin tư vấn sản phẩm theo mô hình GNN+GCL
+3.	Cuối cùng, chuyển sang giai đoạn sinh phản hồi. Hệ thống kết hợp ngữ cảnh hội thoại đã truy xuất và danh sách top-N item gợi ý vào một prompt có cấu trúc. Prompt này bao gồm:
+o	Các đoạn hội thoại liên quan nhất
+o	Các gợi ý item được cá nhân hóa
+o	Tóm tắt truy vấn hiện tại (câu hỏi mới nhất của người dùng)
+ 
+Làm nhanh nhất có thể hướng này  gửi cô trong vài ngày tới. Nếu ổn sẽ có cơ hội rất tốt.
+ 
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Thursday, August 20, 2026 4:42 PM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp 
+ 
+Em chào cô ạ,
+Nhóm em xin phép gửi cô báo cáo về Nghiên cứu việc sử dụng kết hợp GNN+GCL nhằm tăng hiệu quả tư vấn và thực nghiệm đánh giá trên các bộ dữ liệu ạ.
+Mong cô đánh giá và cho nhóm em hướng thực hiện tiếp theo ạ.
+From: Do Thi Lien <liendt@ptit.edu.vn>
+Sent: Wednesday, August 5, 2026 1:12 AM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
 Chào em,
 Cô giao tiếp việc như sau:
 1.	Vẽ hình kiến trúc của mô hình LightGCN thể hiện rõ hơn quá trình lan truyền đa tầng xếp chồng.
 2.	Nghiên cứu tiếp về việc kết hợp GNN+GCL (Graph Contrastive Learning) nhằm tăng hiệu quả tư vấn : học dựa trên mạng nơ ron đồ thị + học tương phản
-
+ 
 Các em thực hiện tiếp  rồi gửi lại cô.
-
+ 
 ________________________________________
 From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
 Sent: Thursday, July 30, 2026 10:20 AM
 To: Do Thi Lien <liendt@ptit.edu.vn>
-Subject: FW: Xin hướng dẫn làm đồ án tốt nghiệp 
+Subject: FW: Xin hướng dẫn làm đồ án tốt nghiệp
  
 Em chào cô ạ,
 Em xin gửi lại cô báo cáo về nghiên cứu các phương pháp hệ tư vấn đã được chỉnh sửa theo như các góp ý của cô ạ.
@@ -17,7 +80,7 @@ Nhóm em rất mong tiếp tục nhận được ý kiến nhận xét và hư�
 Em xin chân thành cảm ơn cô!
 Trân trọng,
  
-From: Do Thi Lien <liendt@ptit.edu.vn> 
+From: Do Thi Lien <liendt@ptit.edu.vn>
 Sent: Monday, July 13, 2026 9:13 AM
 To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
 Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
@@ -39,7 +102,7 @@ ________________________________________
 From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
 Sent: Wednesday, July 8, 2026 11:05 PM
 To: Do Thi Lien <liendt@ptit.edu.vn>
-Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp 
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp
  
 Em chào cô ạ,
 Nhóm em xin gửi cô báo cáo nghiên cứu các phương pháp hệ tư vấn và kết quả thực nghiệm theo những nội dung cô đã hướng dẫn.
@@ -47,7 +110,7 @@ Nhóm em rất mong nhận được ý kiến nhận xét và góp ý của cô 
 Em xin chân thành cảm ơn cô.
 Trân trọng,
  
-From: Do Thi Lien <liendt@ptit.edu.vn> 
+From: Do Thi Lien <liendt@ptit.edu.vn>
 Sent: Wednesday, June 24, 2026 9:03 AM
 To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
 Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
@@ -63,3 +126,71 @@ Cô đã đọc báo cáo của nhóm. Cô nhận xét như sau: nhìn chung nh�
  
 • Độ đo thực nghiệm theo qui chuẩn để thực nghiệm so sánh các giải pháp, chứ ko phải chỉ dạng liệt kê trên vài mẫu nhỏ tự nghĩ ra như các em đang làm. Cụ thể tìm hiểu các độ đo: Precision, Recall, NDCG, MRR, Coverage, Improvement .... -> Khảo sát thêm các độ đo phù hợp. Chạy thực nghiệm so sánh các giải pháp tư vấn khác nhau khi chạy trên cùng bộ dataset thì kết quả khác nhau ntn.
 Chú ý khi tìm h iểu cần đi sâu vào bản chất của phương pháp, chứ ko chỉ là chạy thư viện ra kết quả, mà cần phải hiểu và so sánh giải thích được các giải pháp khác nhau như thế nào, tính hiệu quả vì đâu mang lại. Các em làm việc này tiếp trong 2 tuần, sau báo cáo cô chi tiết toàn bộ 2 nội dung trên để cô hướng dẫn tiếp. Cô sẽ định hướng dần, sẽ kết hợp cả những nghiên cứu vừa qua của các em ở pha sau.
+ 
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Tuesday, June 23, 2026 12:23 AM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Em chào cô ạ,
+Nhóm em xin gửi cô báo cáo tìm hiểu các công nghệ AI và kết quả thử nghiệm, so sánh các giải pháp theo yêu cầu của cô.
+Nhóm em rất mong nhận được ý kiến nhận xét và góp ý của cô để tiếp tục hoàn thiện hướng triển khai đề tài trong thời gian tới.
+Em xin chân thành cảm ơn cô.
+Trân trọng,
+ 
+ 
+From: Do Thi Lien <liendt@ptit.edu.vn>
+Sent: Tuesday, June 9, 2026 7:04 PM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Ok các em hoàn thiện phần tìm hiểu về các công nghệ AI, kèm thử nghiệm demo so sánh các giải pháp trong 2 tuần tới, viết báo cáo gửi cô. Sau đó hướng dẫn tiếp.
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Monday, June 8, 2026 10:51 PM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: RE: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Em chào cô ạ,
+Về các kỹ thuật dự định tìm hiểu và sử dụng trong đề tài, nhóm em đang định hướng:
+•	Xây dựng hệ thống web quản lý nhà hàng bằng Java Spring Boot, React, RESTful API và MySQL.
+•	Tìm hiểu các công nghệ AI như NLP, LLM, RAG, Prompt Engineering để xây dựng chatbot để hỗ trợ tư vấn, gợi ý món theo nhu cầu của khách hàng.
+Về thế mạnh của nhóm:
+•	Nguyễn Đức Bảo B22DCCN064: Có kinh nghiệm xây dựng các hệ thống web quản lý bằng Java Spring Boot, MySQL.
+•	Nguyễn Mạnh Cường B22DCCN100: Có kinh nghiệm xây dựng các web bán hàng bằng Java Spring Boot, MySQL.
+Hiện tại nhóm em vẫn đang tiếp tục tìm hiểu thêm về AI để hoàn thiện hướng triển khai của đề tài.
+Nhóm em rất mong nhận được sự hướng dẫn của cô trong quá trình thực hiện đồ án ạ.
+Em cảm ơn cô ạ.
+Trân trọng,
+ 
+From: Do Thi Lien <liendt@ptit.edu.vn>
+Sent: Monday, June 8, 2026 5:21 PM
+To: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Subject: Re: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Chào em,
+Các em cung cấp thêm cho cô thông tin: các kỹ thuật định tìm hiểu và làm; thế mạnh của các thành viên trong nhóm.
+________________________________________
+From: Nguyen Duc Bao D22CN04 <BaoND.B22CN064@stu.ptit.edu.vn>
+Sent: Friday, June 5, 2026 10:23 PM
+To: Do Thi Lien <liendt@ptit.edu.vn>
+Subject: Xin hướng dẫn làm đồ án tốt nghiệp
+ 
+Kính gửi cô Đỗ Thị Liên,
+Em tên là Nguyễn Đức Bảo,
+Mã sinh viên: B22DCCN064
+Lớp: D22CNPM02.
+Nhóm em xin phép được liên hệ để mong cô xem xét và đồng ý hướng dẫn nhóm em thực hiện đồ án tốt nghiệp trong thời gian tới.
+Hiện tại nhóm em gồm 2 thành viên:
+•	Nguyễn Đức Bảo – B22DCCN064
+•	Nguyễn Mạnh Cường – B22DCCN100
+Nhóm em đang dự định thực hiện đề tài: “Xây dựng hệ thống quản lý nhà hàng tích hợp AI hỗ trợ tư vấn chọn món ăn”.
+Đề tài hướng tới việc xây dựng một hệ thống quản lý nhà hàng với các chức năng như quản lý món ăn, bàn ăn, hóa đơn, nhân viên và thống kê doanh thu. Bên cạnh đó, hệ thống sẽ tích hợp AI hỗ trợ gợi ý món ăn dựa trên nhu cầu của khách hàng như ngân sách, sở thích ăn uống và các yêu cầu đặc biệt, từ đó đề xuất thực đơn phù hợp.
+Chúng em hy vọng có cơ hội được cô đồng ý hướng dẫn và hỗ trợ nhóm trong quá trình thực hiện đồ án.
+Chúng em xin chân thành cảm ơn cô và mong nhận được phản hồi từ cô.
+Trân trọng,
+Nguyễn Đức Bảo
+Mã sinh viên: B22DCCN064
+SĐT: 0974496682
+Email: BaoND.B22CN064@stu.ptit.edu.vn

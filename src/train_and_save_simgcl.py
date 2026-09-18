@@ -11,17 +11,18 @@ import sys
 import time
 import torch
 
-sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), 'src'))
+project_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 from data_loader import DataLoaderMovieLens
-from model_lightgcn_gcl import SimGCL, train_gcl_model
+from GP5_model_lightgcn_gcl import SimGCL, train_gcl_model
 
 def main():
     print("=" * 60)
     print("🚀 BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH GNN + GCL (SimGCL) CHO NHÁNH 1B")
     print("=" * 60)
 
-    data_dir = 'ml-latest-small'
+    data_dir = os.path.join(project_dir, 'ml-latest-small')
     loader = DataLoaderMovieLens(data_dir, seed=42)
     data = loader.prepare_data()
 
@@ -71,8 +72,9 @@ def main():
     print(f"\n✅ Huấn luyện hoàn thành trong {train_time:.1f} giây!")
 
     # Lưu checkpoint
-    os.makedirs('checkpoints', exist_ok=True)
-    save_path = os.path.join('checkpoints', 'simgcl_movielens.pt')
+    checkpoints_dir = os.path.join(project_dir, 'checkpoints')
+    os.makedirs(checkpoints_dir, exist_ok=True)
+    save_path = os.path.join(checkpoints_dir, 'simgcl_movielens.pt')
 
     # Mapping
     user2id = {str(k): int(v) for k, v in data['user2id'].items()}
